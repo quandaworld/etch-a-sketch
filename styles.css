@@ -17,20 +17,15 @@ h1 {
 }
 
 .grid-container {
-  max-width: 484px;
-  min-width: 484px;
-  min-height: 484px;
-  max-height: 484px;
-  border: 2px solid black;
+  min-height: 550px;
+  width: 550px;
+  border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
 }
 
 .grid-square {
-  max-width: 30px;
-  min-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
+  flex: 1 1 auto;
   border: 1px solid lightgrey;
 }
 
