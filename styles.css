@@ -30,11 +30,11 @@ h1 {
   border-right: 1px solid rgb(177, 177, 177);
 }
 
-.top {
+.border-top {
   border-top: none;
 }
 
-.right {
+.border-right {
   border-right: none;
 }
 
