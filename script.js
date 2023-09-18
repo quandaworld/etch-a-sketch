@@ -1,4 +1,4 @@
-const DEFAULT_SIZE = 30;
+const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#3d3d3d';
 const container_div = document.querySelector('.grid-container');
 let isPressed = false;
