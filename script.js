@@ -1,12 +1,11 @@
-const DEFAULT_SIZE = 20;
+const DEFAULT_SIZE = 30;
 const DEFAULT_COLOR = '#3d3d3d';
 const container_div = document.querySelector('.grid-container');
+let isPressed = false;
 
-
-function changeColor(square, color = DEFAULT_COLOR) {
-  square.style.backgroundColor = color;
+function changeColor(e, color = DEFAULT_COLOR) {
+  if (isPressed) e.target.style.backgroundColor = color;
 }
-
 
 function fillGrid(size = DEFAULT_SIZE) {
   for (let i = 1; i <= size * size; i++) {
@@ -16,16 +15,9 @@ function fillGrid(size = DEFAULT_SIZE) {
     if (i % size === 0) square_div.classList.add('border-right');
     square_div.style.minWidth =`calc(1 / ${size} * 100%)`; // Maximum number of square_div in a row at any time
     container_div.appendChild(square_div);
-
-    const helper = () => changeColor(square_div);
-
-    container_div.addEventListener('click', () => {
-      square_div.addEventListener('mouseenter', helper);
-    });
-
-    container_div.addEventListener('dblclick', () => {
-      square_div.removeEventListener('mouseenter', helper);
-    });
+    square_div.addEventListener('mousedown', () => isPressed = true);
+    square_div.addEventListener('mouseup', () => isPressed = false);
+    square_div.addEventListener('mousemove', changeColor);
   }
 }
 
