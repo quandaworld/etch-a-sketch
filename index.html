@@ -10,10 +10,23 @@
 </head>
 <body>
   <h1>ETCH-A-SKETCH</h1>
-  <div class="grid-container"></div>
+  <div class="container">
+    <div class="buttons">
+      <button class="btn" id="color">Colored Pencil</button>
+      <button class="btn" id="rainbow">Rainbow Pencil</button>
+      <button class="btn" id="eraser">Eraser</button>
+      <button class="btn" id="reset">Reset</button>
+    </div>
+    <div class="grid-container"></div>
+    <div class="slidecontainer">
+      <p>Grid Size: <span id="grid-size">16 x 16</span></p>
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+  </div>
+  
   <footer>
     Copyright &copy <span id="year"></span> quandaworld
-    <a href="https://github.com/quandaworld" target="_blank"><i class="fa fa-github" style="font-size:23px; color:#000000"></i></a>
+    <a href="https://github.com/quandaworld" target="_blank"><i class="fa fa-github" style="font-size:22px; color:#000000"></i></a>
   </footer>
 </body>
 </html>
