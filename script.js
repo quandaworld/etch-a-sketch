@@ -43,9 +43,7 @@ eraser_button.addEventListener('click', () => {
 });
 
 reset_button.addEventListener('click', () => {
-  gridSquare_list.forEach(square => {
-    square.style.backgroundColor = '';
-  });
+  gridSquare_list.forEach(square => square.style.backgroundColor = '');
   eraser = false;
 });
 
