@@ -15,7 +15,7 @@ body {
 
 h1 {
   margin-top: 30px;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .container {
@@ -45,7 +45,6 @@ h1 {
 .grid-container {
   min-height: 550px;
   width: 550px;
-  border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
   flex: none;
@@ -58,11 +57,19 @@ h1 {
 }
 
 .border-top {
-  border-top: none;
+  border-top: 1px solid black;
+}
+
+.border-bottom {
+  border-bottom: 1px solid black;
+}
+
+.border-left {
+  border-left: 1px solid black;
 }
 
 .border-right {
-  border-right: none;
+  border-right: 1px solid black;
 }
 
 .slidecontainer {
