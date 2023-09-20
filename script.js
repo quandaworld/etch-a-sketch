@@ -9,9 +9,14 @@ const reset_button = document.getElementById('reset');
 const size_span = document.getElementById('grid-size');
 const slider_input = document.getElementById('myRange');
 const color_input = document.getElementById('color-picker');
+const buttons_list = document.querySelectorAll('.btn');
 let isPressed = false;
 let currentMode = DEFAULT_MODE;
 let currentColor = DEFAULT_COLOR;
+
+function unhighlightButton() {
+  buttons_list.forEach(button => button.classList.remove('clicked'));
+}
 
 function addMouseEvent(element) {
   element.addEventListener('mousedown', changeColor);
@@ -59,23 +64,32 @@ color_input.addEventListener('input', () => {
 });
 
 color_button.addEventListener('click', () => {
+  unhighlightButton();
+  color_button.classList.add('clicked');
   currentMode = 'colored';
   gridSquare_list.forEach(square => addMouseEvent(square));
 });
 
 rainbow_button.addEventListener('click', () => {
+  unhighlightButton();
+  rainbow_button.classList.add('clicked')
   currentMode = 'rainbow';
   gridSquare_list.forEach(square => addMouseEvent(square));
 })
 
 eraser_button.addEventListener('click', () => {
+  unhighlightButton();
+  eraser_button.classList.add('clicked')
   currentMode = 'eraser';
   gridSquare_list.forEach(square => addMouseEvent(square));
 });
 
 reset_button.addEventListener('click', () => {
+  unhighlightButton();
+  color_button.classList.add('clicked');
   currentMode = DEFAULT_MODE;
   currentColor = DEFAULT_COLOR;
+  color_input.value = DEFAULT_COLOR;
   gridSquare_list.forEach(square => square.style.backgroundColor = '');
 });
 
