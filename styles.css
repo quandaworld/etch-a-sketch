@@ -42,14 +42,56 @@ h1 {
   cursor: pointer;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  font-family: Tahoma;
+  font-size: 14px;
+  border: 1px solid #3d3d3d;
+  border-radius: 3px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  margin-bottom: 10px;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #3d3d3d transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 .btn {
   width: 210px;
-  border: 1px solid;
+  border: 1px solid #3d3d3d;
   border-radius: 7px;
   font-size: 18px;
   padding: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   cursor: pointer;
+}
+
+.clicked {
+  font-weight: bold;
+  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .grid-container {
