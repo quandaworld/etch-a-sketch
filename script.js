@@ -1,5 +1,6 @@
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#3d3d3d';
+const DEFAULT_MODE = 'colored';
 const container_div = document.querySelector('.grid-container');
 const color_button = document.getElementById('color');
 const rainbow_button = document.getElementById('rainbow');
@@ -7,14 +8,10 @@ const eraser_button = document.getElementById('eraser');
 const reset_button = document.getElementById('reset');
 const size_span = document.getElementById('grid-size');
 const slider_input = document.getElementById('myRange');
+const color_input = document.getElementById('color-picker');
 let isPressed = false;
-let currentMode = 'default';
-
-size_span.innerHTML = `${slider_input.value} x ${slider_input.value}`
-
-slider_input.oninput = function() {
-  size_span.innerHTML = `${this.value} x ${this.value}`;
-} 
+let currentMode = DEFAULT_MODE;
+let currentColor = DEFAULT_COLOR;
 
 function addMouseEvent(element) {
   element.addEventListener('mousedown', changeColor);
@@ -25,8 +22,7 @@ function addMouseEvent(element) {
 function changeColor(e) {
   if (e.type === 'mousedown') isPressed = true;
   if (isPressed) {
-    if (currentMode === 'default') e.target.style.backgroundColor = DEFAULT_COLOR;
-    if (currentMode === 'colored') e.target.style.backgroundColor = 'coral';
+    if (currentMode === 'colored') e.target.style.backgroundColor = currentColor;
     if (currentMode === 'rainbow') e.target.style.backgroundColor = randomizeRGB();
     if (currentMode === 'eraser') e.target.style.backgroundColor = '';
   }
@@ -58,6 +54,10 @@ fillGrid();
 
 let gridSquare_list = document.querySelectorAll('.grid-square');
 
+color_input.addEventListener('input', () => {
+  currentColor = color_input.value;
+});
+
 color_button.addEventListener('click', () => {
   currentMode = 'colored';
   gridSquare_list.forEach(square => addMouseEvent(square));
@@ -74,9 +74,16 @@ eraser_button.addEventListener('click', () => {
 });
 
 reset_button.addEventListener('click', () => {
-  currentMode = 'default';
+  currentMode = DEFAULT_MODE;
+  currentColor = DEFAULT_COLOR;
   gridSquare_list.forEach(square => square.style.backgroundColor = '');
 });
+
+size_span.innerHTML = `${slider_input.value} x ${slider_input.value}`
+
+slider_input.oninput = function() {
+  size_span.innerHTML = `${this.value} x ${this.value}`;
+} 
 
 slider_input.addEventListener('click', () => {
   container_div.innerHTML = ''; // Clear grid
