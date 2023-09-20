@@ -17,12 +17,13 @@ slider_input.oninput = function() {
 } 
 
 function addMouseEvent(element) {
-  element.addEventListener('mousedown', () => isPressed = true);
+  element.addEventListener('mousedown', changeColor);
+  element.addEventListener('mouseenter', changeColor);
   document.body.addEventListener('mouseup', () => isPressed = false);
-  element.addEventListener('mousemove', changeColor);
 }
 
 function changeColor(e) {
+  if (e.type === 'mousedown') isPressed = true;
   if (isPressed) {
     if (currentMode === 'default') e.target.style.backgroundColor = DEFAULT_COLOR;
     if (currentMode === 'colored') e.target.style.backgroundColor = 'coral';
@@ -49,7 +50,7 @@ function fillGrid(size = DEFAULT_SIZE) {
     if (i >= size * (size - 1) + 1 && i <= Math.pow(size, size)) square_div.classList.add('border-bottom');
     square_div.style.minWidth =`calc(1 / ${size} * 100%)`; // Maximum number of square_div in a row at any time
     container_div.appendChild(square_div);
-    addMouseEvent(square_div, changeColor);
+    addMouseEvent(square_div);
   }
 }
 
