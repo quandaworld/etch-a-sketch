@@ -33,13 +33,23 @@ h1 {
   gap: 20px;
 }
 
+#color-picker {
+  -webkit-appearance: none;
+  width: 211px;
+  height: 53px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
 .btn {
   width: 210px;
+  border: 1px solid;
+  border-radius: 7px;
   font-size: 18px;
   padding: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  border-radius: 7px;
-  border: 1px solid;
+  cursor: pointer;
 }
 
 .grid-container {
