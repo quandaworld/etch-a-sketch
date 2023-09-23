@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch-A-Sketch</title>
   <script src="script.js" defer></script>
+  <script src="https://kit.fontawesome.com/71382635df.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <h1>ETCH-A-SKETCH</h1>
   <div class="container">
     <div class="buttons">
-      <div class="tooltip"><input type="color" id="color-picker" value="#3d3d3d"><span class="tooltiptext">Pick pencil color</span></div>
+      <div class="rgb-container">
+        <input type="color" id="color-picker" value="#3d3d3d">
+        <i class="fa-solid fa-eye-dropper" style="font-size: 42px; color: #3d3d3d;"></i>
+      </div>
       <button class="btn clicked" id="color">Colored Pencil</button>
       <button class="btn" id="rainbow">Rainbow Pencil</button>
       <button class="btn" id="eraser">Eraser</button>
@@ -26,7 +29,7 @@
   </div>
   <footer>
     Copyright &copy <span id="year"></span> quandaworld
-    <a href="https://github.com/quandaworld" target="_blank"><i class="fa fa-github" style="font-size:22px; color:#000000"></i></a>
+    <a href="https://github.com/quandaworld" target="_blank"><i class="fa fa-github" style="font-size: 22px; color: #000000"></i></a>
   </footer>
 </body>
 </html>
