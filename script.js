@@ -14,15 +14,14 @@ let isPressed = false;
 let currentMode = DEFAULT_MODE;
 let currentColor = DEFAULT_COLOR;
 
+
 function unhighlightButton() {
   buttons_list.forEach(button => button.classList.remove('clicked'));
 }
 
-function addMouseEvent(element) {
-  element.addEventListener('mousedown', changeColor);
-  element.addEventListener('mouseenter', changeColor);
-  document.body.addEventListener('mouseup', () => isPressed = false);
-}
+container_div.addEventListener('mousedown', changeColor);
+container_div.addEventListener('mouseover', changeColor);
+document.body.addEventListener('mouseup', () => isPressed = false);
 
 function changeColor(e) {
   if (e.type === 'mousedown') isPressed = true;
@@ -51,7 +50,6 @@ function fillGrid(size = DEFAULT_SIZE) {
     if (i >= size * (size - 1) + 1 && i <= Math.pow(size, size)) square_div.classList.add('border-bottom');
     square_div.style.minWidth =`calc(1 / ${size} * 100%)`; // Maximum number of square_div in a row at any time
     container_div.appendChild(square_div);
-    addMouseEvent(square_div);
   }
 }
 
@@ -67,21 +65,18 @@ color_button.addEventListener('click', () => {
   unhighlightButton();
   color_button.classList.add('clicked');
   currentMode = 'colored';
-  gridSquare_list.forEach(square => addMouseEvent(square));
 });
 
 rainbow_button.addEventListener('click', () => {
   unhighlightButton();
   rainbow_button.classList.add('clicked')
   currentMode = 'rainbow';
-  gridSquare_list.forEach(square => addMouseEvent(square));
 })
 
 eraser_button.addEventListener('click', () => {
   unhighlightButton();
   eraser_button.classList.add('clicked')
   currentMode = 'eraser';
-  gridSquare_list.forEach(square => addMouseEvent(square));
 });
 
 reset_button.addEventListener('click', () => {
