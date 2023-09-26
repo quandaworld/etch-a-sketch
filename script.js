@@ -1,5 +1,5 @@
 const DEFAULT_SIZE = 16;
-const DEFAULT_COLOR = '#3d3d3d';
+const DEFAULT_COLOR = '#16123f';
 const DEFAULT_MODE = 'colored';
 const container_div = document.querySelector('.grid-container');
 const color_button = document.getElementById('color');
@@ -44,8 +44,6 @@ function fillGrid(size = DEFAULT_SIZE) {
     const square_div = document.createElement('div');
     square_div.classList.add('grid-square');
     if (i === 1) square_div.classList.add('border-top', 'border-left');
-    if (i > 1 && i <= size) square_div.classList.add('border-top');
-    if (i % size === 0) square_div.classList.add('border-right');
     if (i % size === 1) square_div.classList.add('border-left');
     if (i >= size * (size - 1) + 1 && i <= Math.pow(size, size)) square_div.classList.add('border-bottom');
     square_div.style.minWidth =`calc(1 / ${size} * 100%)`; // Maximum number of square_div in a row at any time
