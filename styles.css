@@ -140,6 +140,7 @@ footer {
 
 @media only screen and (max-width: 850px) {
   body {
+    background: none;
     background-color: #abd699;
   }
 
