@@ -15,15 +15,15 @@ let currentMode = DEFAULT_MODE;
 let currentColor = DEFAULT_COLOR;
 
 
-function unhighlightButton() {
+function unhighlightButton() { // remove highlight of buttons
   buttons_list.forEach(button => button.classList.remove('clicked'));
 }
 
-container_div.addEventListener('mousedown', changeColor);
-container_div.addEventListener('mouseover', changeColor);
-document.body.addEventListener('mouseup', () => isPressed = false);
+container_div.addEventListener('mousedown', changeColor); // change grid color when mouse is pressed down inside grid container
+container_div.addEventListener('mouseover', changeColor); // change grid color when mouse is dragged inside grid container
+document.body.addEventListener('mouseup', () => isPressed = false); // stop drawing effect when mouse is up outside of the container
 
-function changeColor(e) {
+function changeColor(e) { // change color effect
   if (e.type === 'mousedown') isPressed = true;
   if (isPressed) {
     if (currentMode === 'colored') e.target.style.backgroundColor = currentColor;
@@ -32,14 +32,14 @@ function changeColor(e) {
   }
 }
 
-function randomizeRGB() {
+function randomizeRGB() { // RGB color mode
   const r = Math.floor(Math.random() * 256); 
   const g = Math.floor(Math.random() * 256); 
   const b = Math.floor(Math.random() * 256); 
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function fillGrid(size = DEFAULT_SIZE) {
+function fillGrid(size = DEFAULT_SIZE) { // fill grid container based on grid size
   for (let i = 1; i <= size * size; i++) {
     const square_div = document.createElement('div');
     square_div.classList.add('grid-square');
@@ -51,33 +51,33 @@ function fillGrid(size = DEFAULT_SIZE) {
   }
 }
 
-fillGrid();
+fillGrid(); 
 
 let gridSquare_list = document.querySelectorAll('.grid-square');
 
-color_input.addEventListener('input', () => {
+color_input.addEventListener('input', () => { // take color input from color palette
   currentColor = color_input.value;
 });
 
-color_button.addEventListener('click', () => {
+color_button.addEventListener('click', () => { // highlight colored pencil button
   unhighlightButton();
   color_button.classList.add('clicked');
   currentMode = 'colored';
 });
 
-rainbow_button.addEventListener('click', () => {
+rainbow_button.addEventListener('click', () => { // highlight rainbow pencil button
   unhighlightButton();
   rainbow_button.classList.add('clicked')
   currentMode = 'rainbow';
 })
 
-eraser_button.addEventListener('click', () => {
+eraser_button.addEventListener('click', () => { // highlight eraser button
   unhighlightButton();
   eraser_button.classList.add('clicked')
   currentMode = 'eraser';
 });
 
-reset_button.addEventListener('click', () => {
+reset_button.addEventListener('click', () => { // reset grid container
   unhighlightButton();
   color_button.classList.add('clicked');
   currentMode = DEFAULT_MODE;
@@ -88,13 +88,13 @@ reset_button.addEventListener('click', () => {
 
 size_span.innerHTML = `${slider_input.value} x ${slider_input.value}`
 
-slider_input.oninput = function() {
+slider_input.oninput = function() { // take grid size from slider input
   size_span.innerHTML = `${this.value} x ${this.value}`;
 } 
 
 slider_input.addEventListener('click', () => {
   container_div.innerHTML = ''; // Clear grid
-  fillGrid(Number(slider_input.value));
+  fillGrid(Number(slider_input.value)); // fill grid container based on slider input
   gridSquare_list = document.querySelectorAll('.grid-square'); // Update gridSquare_list
 });
 
